@@ -94,10 +94,10 @@ ifcapable explain {
        LEFT OUTER JOIN child1 ON child1.child1key = parent1.child1key
        INNER JOIN child2 ON child2.child2key = parent1.child2key;
      }
-  } [explain_no_trace {
+   } [explain_no_trace {
        SELECT parent1.parent1key, child1.value, child2.value
        FROM parent1
-       LEFT OUTER JOIN child1 ON parent1.child1key = child1.child1key 
+       LEFT OUTER JOIN child1 ON child1.child1key = parent1.child1key
        INNER JOIN child2 ON child2.child2key = parent1.child2key;
      }]
 }
