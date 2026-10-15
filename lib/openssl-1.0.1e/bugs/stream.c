@@ -106,10 +106,17 @@ int des()
 
 int rc4()
 	{
-	static char *keystr="0123456789abcdef";
 	RC4_KEY key;
 	unsigned char in[100],out[100];
 	int i;
+	const char *keystr;
+
+	keystr = getenv("RC4_TEST_KEY");
+	if (keystr == NULL)
+		{
+		fprintf(stderr,"RC4_TEST_KEY environment variable not set\n");
+		return -1;
+		}
 
 	RC4_set_key(&key,16,keystr);
 	in[0]='\0';
